@@ -76,7 +76,6 @@ $alert_bg_class = get_alert_background_class($alert);
                 Piarco Trinidad
                 </address>
               </div>
-              <div class="object-inline"><span class="icon novi-icon icon-sm icon-gray material-icons-phone"></span><a class="link link-sm link-white" href="callto:#">+1 (868)-669-5465</a></div>
             </div>
           </div>
           <?php if(isset($alert['alerts'])):
@@ -105,6 +104,7 @@ $alert_bg_class = get_alert_background_class($alert);
           </div>-->
             
             <?php endif; ?>
+
           <div class="rd-navbar-inner">
             <div class="rd-navbar-panel">
               <div class="rd-navbar-panel-background">

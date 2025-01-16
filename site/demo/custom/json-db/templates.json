@@ -148,5 +148,48 @@
         "level": "0",
         "routed": "on",
         "hooks": []
+    },
+    {
+        "id": "climate",
+        "name": "Climate",
+        "routed": "",
+        "resources": [
+            {
+                "id": "climate_header",
+                "title": "Climate Header",
+                "subtitle": "",
+                "type": "text",
+                "settings": {
+                    "validation": "required",
+                    "max_length": "125",
+                    "seo_h1": "on"
+                }
+            },
+            {
+                "id": "climate_content",
+                "title": "Climate Content", 
+                "subtitle": "",
+                "type": "html",
+                "settings": {
+                    "seo_body": "on"
+                }
+            },
+            {
+                "id": "climate_image",
+                "title": "Climate Image",
+                "subtitle": "Featured image for climate section",
+                "type": "image",
+                "settings": {
+                    "directory": "files/climate/",
+                    "min_width": "1440",
+                    "min_height": "810"
+                }
+            }
+        ],
+        "hooks": [],
+        "module": null,
+        "level": "0",
+        "position": 10,
+        "extension": null
     }
 ]

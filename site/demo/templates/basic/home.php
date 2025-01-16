@@ -187,50 +187,61 @@ elseif(stripos($home_forecast['forecastArea3'],$tb_search)!==false):
         endif;
 
        
-function get_icon($icon ="", $home_forecast = null){
+function get_icon($icon ="", $home_forecast = null) {
     $icon = strtolower($icon);
-    $t_icon="";
+    $t_icon = "";
     
     // Use $www_root instead of $_SERVER["SCRIPT_URI"]
     global $www_root;
     
-    if($home_forecast["forecastTime"]=="05:30PM" or (date("H")>"17")){
-        $t_icon = $www_root."images/category/weather_icons/".$icon." night.png";
-    }else{
-        $t_icon = $www_root."images/category/weather_icons/".$icon.".png";
+    // Check if it's night time based on forecast time or current hour
+    $is_night = ($home_forecast && $home_forecast["forecastTime"]=="05:30PM") || (date("H") > "17");
+    
+    // Construct image path
+    if($is_night) {
+        $t_icon = $www_root."images/category/weather_icons/".trim($icon)." night.png";
+    } else {
+        $t_icon = $www_root."images/category/weather_icons/".trim($icon).".png";
     }
- 
-    $headers=get_headers($t_icon);
 
-    if(stripos($headers[0],"200 OK")){
-   
-    }else{
-        if($home_forecast["forecastTime"]=="05:30PM" or (date("H")>"17")){
-            $t_icon = $www_root."images/category/weather_icons/night partly cloudy with a few showers.png";
-        }else{
-            $t_icon = $www_root."images/category/weather_icons/isolated showers.png";
+    // Validate if image exists
+    if(file_exists($_SERVER['DOCUMENT_ROOT'] . parse_url($t_icon, PHP_URL_PATH))) {
+        return $t_icon;
+    } else {
+        // Fallback images if original doesn't exist
+        if($is_night) {
+            return $www_root."images/category/weather_icons/night partly cloudy with a few showers.png";
+        } else {
+            return $www_root."images/category/weather_icons/isolated showers.png";
         }
     }
-    return $t_icon;
 }
 
 function get_icon_day($icon =""){
     $icon = strtolower($icon);
     $tell = $_SERVER["SCRIPT_URI"];
-    $t_icon="";
+    $t_icon = "";
    
+    // Check if icon contains "up" or "down" to use arrow images
+    if (strpos($icon, "up") !== false) {
+        $t_icon = $tell."images/category/weather_icons/arrow_up_green.png";
+    } else if (strpos($icon, "down") !== false) {
+        $t_icon = $tell."images/category/weather_icons/arrow_down_red.png";
+    } else {
         $t_icon = $tell."images/category/weather_icons/".$icon.".png";
+    }
    
-    $headers=get_headers($t_icon);
+    $headers = get_headers($t_icon);
 
-if(stripos($headers[0],"200 OK")){
-   
-}else{
-    
-    $t_icon = $tell."images/category/weather_icons/isolated showers.png";
-  
-}
-return $t_icon;
+    if(stripos($headers[0],"200 OK")){
+        // Image exists
+    } else {
+        // Fallback image if not found
+        $t_icon = $tell."images/category/weather_icons/isolated showers.png";
+    }
+
+    // Add style to make image bigger
+    return $t_icon;
 }
 
 	?>
@@ -258,10 +269,10 @@ return $t_icon;
                                         <div id="qlook" class="bk-focus__qlook">
                                             <div class="h1">Now</div>
                                             <div class="mtt" data-mtt="<?=$home_forecast["imageTrin"]?>">
-                                                <img id="cur-weather" src="<?=get_icon($day[0]['trini_icon'], $home_forecast)?>" width="100" height="100">
+                                                <img id="cur-weather" src="<?=get_icon($day[0]['trini_icon'], $home_forecast)?>" width="260" height="260">
                                             </div>
                                             <p><?=$home_forecast["imageTrin"]?></p>
-                                            <p><?=$station["TTPP"]["Temperature:"]?></p>
+                                            <p><?=$station["TTPP"]["Temperature:"]?> °C</p>
                                             <?php
                                             $code = "TTPP";
                                             if(isset($station[$code])){
@@ -307,11 +318,19 @@ return $t_icon;
                                         <div class="pricing-box-1 <?=$count == $active ? "active " : "" ?>">
                                             <div class="pricing-title"><?= date("D",strtotime("+".$count." day"))?></div>
                                             <div>
-                                                <img src="<?=get_icon($d['trini_icon'], $home_forecast)?>" alt="" width="150" height="150">
+                                                <img src="<?=get_icon($d['trini_icon'], $home_forecast)?>" alt="" width="200" height="200">
                                             </div>
                                             <ul class="pricing-list">
-                                                <li><span>Max Temperature </span><?= $d["piarco"]["max"] == null ? "--" : $d["piarco"]["max"] ?></li>
-                                                <li><span>Min Temperature</span> <?=$d["piarco"]["min"] == null ? "--" : $d["piarco"]["min"] ?></li>
+                                                <li>
+                                                    <i class="bi bi-chevron-up text-success"></i>
+                                                    <span>Max  </span>
+                                                    <?= $d["piarco"]["max"] == null ? "--" : $d["piarco"]["max"]." °C" ?>
+                                                </li>
+                                                <li>
+                                                    <i class="bi bi-chevron-down text-danger"></i>
+                                                    <span>Min </span>
+                                                    <?=$d["piarco"]["min"] == null ? "--" : $d["piarco"]["min"]." °C" ?>
+                                                </li>
                                             </ul>
                                             <hr class="pricing-divider">
                                         </div>
@@ -333,10 +352,10 @@ return $t_icon;
                                         <div id="qlook" class="bk-focus__qlook">
                                             <div class="h1">Now</div>
                                             <div class="mtt" data-mtt="<?=$home_forecast["imagebago"]?>">
-                                                <img id="cur-weather" src="<?=get_icon($day[0]['tbg_icon'], $home_forecast)?>" width="100" height="100">
+                                                <img id="cur-weather" src="<?=get_icon($day[0]['tbg_icon'], $home_forecast)?>" width="260" height="260">
                                             </div>
                                             <p><?=$home_forecast["imagebago"]?></p>
-                                            <p><?=$station["TTCP"]["Temperature:"]?></p>
+                                            <p><?=$station["TTCP"]["Temperature:"]?>°C</p>
                                             <?php
                                             $code = "TTCP";
                                             if(isset($station[$code])){
@@ -382,11 +401,19 @@ return $t_icon;
                                         <div class="pricing-box-1 <?=$count == $active ? "active " : "" ?>">
                                             <div class="pricing-title"><?= date("D",strtotime("+".$count." day"))?></div>
                                             <div>
-                                                <img src="<?=get_icon($d['tbg_icon'], $home_forecast)?>" alt="" width="150" height="150">
+                                                <img src="<?=get_icon($d['tbg_icon'], $home_forecast)?>" alt="" width="260" height="260">
                                             </div>
                                             <ul class="pricing-list">
-                                                <li><span>Max Temperature </span><?= $d["tobago"]["max"] == null ? "--" : $d["tobago"]["max"] ?></li>
-                                                <li><span>Min Temperature</span> <?=$d["tobago"]["min"] == null ? "--" : $d["tobago"]["min"] ?></li>
+                                                <li>
+                                                    <i class="bi bi-chevron-up text-success"></i>
+                                                    <span>Max  </span>
+                                                    <?= $d["tobago"]["max"] == null ? "--" : $d["tobago"]["max"]." °C" ?>
+                                                </li>
+                                                <li>
+                                                    <i class="bi bi-chevron-down text-danger"></i>
+                                                    <span>Min </span>
+                                                    <?=$d["tobago"]["min"] == null ? "--" : $d["tobago"]["min"]." °C" ?>
+                                                </li>
                                             </ul>
                                             <hr class="pricing-divider">
                                         </div>
@@ -410,7 +437,12 @@ return $t_icon;
     <div class="container">
       <div class="row justify-content-center spacing-30">
            <div class="col-sm-10 col-md-12">
-              <h3><span class="heading-3">Services</span></h3>
+              <h3 class="services-heading text-center">
+                  <span class="heading-3 position-relative">
+                      Services
+                      <span class="heading-underline"></span>
+                  </span>
+              </h3>
            </div>
            
            <!-- Agriculture Service -->
