@@ -1,0 +1,2 @@
+<?php
+	$cloud = new BigTreeCloudStorage;

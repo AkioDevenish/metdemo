@@ -1,0 +1,2 @@
+<?php
+	$gateway = new BigTreePaymentGateway;

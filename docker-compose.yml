@@ -1,0 +1,70 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./site/demo:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=metofficett_metdemo1
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=rootpassword
+    networks:
+      - bigtree-network
+
+  db:
+    image: mysql:8.0
+    platform: linux/arm64/v8
+    command: 
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-ssl
+      - --sql-mode=NO_AUTO_VALUE_ON_ZERO
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=metofficett_metdemo1
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_USER=metofficett_metdemo
+      - MYSQL_PASSWORD=F+qgvL9f-_Bc
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./site/demo/core/setup/base.sql:/docker-entrypoint-initdb.d/base.sql
+    networks:
+      - bigtree-network
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    platform: linux/arm64/v8
+    ports:
+      - "8082:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=rootpassword
+      - UPLOAD_LIMIT=300M
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - bigtree-network
+
+volumes:
+  mysql_data:
+
+networks:
+  bigtree-network:
+    driver: bridge
+  

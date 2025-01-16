@@ -1,0 +1,152 @@
+[
+    {
+        "id": "content",
+        "name": "Content",
+        "routed": "",
+        "resources": [
+            {
+                "id": "page_header",
+                "title": "Page Header",
+                "subtitle": "",
+                "type": "text",
+                "settings": {
+                    "validation": "required",
+                    "max_length": "125",
+                    "seo_h1": "on"
+                }
+            },
+            {
+                "id": "page_content",
+                "title": "Page Content",
+                "subtitle": "",
+                "type": "html",
+                "settings": {
+                    "seo_body": "on"
+                }
+            }
+        ],
+        "hooks": [],
+        "module": null,
+        "level": "0",
+        "position": 9,
+        "extension": null
+    },
+    {
+        "id": "header",
+        "name": "Header",
+        "module": "",
+        "resources": [],
+        "level": "0",
+        "routed": "",
+        "hooks": [],
+        "position": 8
+    },
+    {
+        "id": "footer",
+        "name": "Footer",
+        "module": "",
+        "resources": [],
+        "level": "0",
+        "routed": "",
+        "hooks": [],
+        "position": 7
+    },
+    {
+        "id": "home",
+        "name": "homepage",
+        "module": "",
+        "resources": [],
+        "level": "0",
+        "routed": "",
+        "hooks": [],
+        "position": 6
+    },
+    {
+        "id": "services",
+        "name": "Our Services",
+        "module": "",
+        "resources": [
+            {
+                "id": "cont",
+                "type": "html",
+                "title": "content",
+                "subtitle": "subcontent",
+                "settings": []
+            }
+        ],
+        "level": "0",
+        "routed": "on",
+        "hooks": [],
+        "position": 5
+    },
+    {
+        "id": "satellite",
+        "name": "satellite",
+        "module": "",
+        "resources": [],
+        "level": "0",
+        "routed": "",
+        "hooks": [],
+        "position": 3
+    },
+    {
+        "id": "forecast",
+        "name": "forecast",
+        "module": null,
+        "resources": [
+            {
+                "id": "php",
+                "title": "PHP",
+                "subtitle": "PHP entry",
+                "type": "com.fastspot.rawtext-field-types*raw-text",
+                "settings": []
+            }
+        ],
+        "level": "0",
+        "routed": "",
+        "hooks": [],
+        "position": 5
+    },
+    {
+        "id": "comms",
+        "name": "comms",
+        "module": "",
+        "resources": [],
+        "level": "0",
+        "routed": "",
+        "hooks": [],
+        "position": 4
+    },
+    {
+        "id": "radar",
+        "name": "Radar",
+        "module": "modules-1670d173aa3798",
+        "resources": [
+            {
+                "id": "page_image",
+                "title": "Page Image",
+                "subtitle": "Min 1440x810px",
+                "type": "image",
+                "settings": {
+                    "directory": "files/pages/",
+                    "min_width": "1440",
+                    "min_height": "810",
+                    "preview_prefix": "sml_"
+                }
+            }
+        ],
+        "level": "0",
+        "routed": "on",
+        "hooks": [],
+        "position": 1
+    },
+    {
+        "id": "Satellite",
+        "name": "Satellite",
+        "module": "modules-1670d39507b504",
+        "resources": [],
+        "level": "0",
+        "routed": "on",
+        "hooks": []
+    }
+]

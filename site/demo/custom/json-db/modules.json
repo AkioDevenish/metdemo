@@ -1,0 +1,320 @@
+[
+    {
+        "name": "Radar",
+        "route": "radar",
+        "class": "Radar",
+        "group": "module-groups-1670d173aa301a",
+        "gbp": {
+            "name": "",
+            "table": "",
+            "item_parser": "",
+            "other_table": ""
+        },
+        "graphql": false,
+        "icon": "weather",
+        "actions": [
+            {
+                "route": "add",
+                "in_nav": "",
+                "class": "add",
+                "name": "Add Radar",
+                "form": "forms-1670d1a79bb67e",
+                "view": null,
+                "report": null,
+                "level": 0,
+                "position": "1",
+                "0": "route",
+                "id": "actions-1670d1a79bbdb3"
+            },
+            {
+                "route": "edit",
+                "in_nav": "",
+                "class": "edit",
+                "name": "Edit Radar",
+                "form": "forms-1670d1a79bb67e",
+                "view": null,
+                "report": null,
+                "level": 0,
+                "position": 0,
+                "0": "route",
+                "id": "actions-1670d1a79bc209"
+            },
+            {
+                "route": "view",
+                "in_nav": "",
+                "class": "list",
+                "name": "View Radars",
+                "form": null,
+                "view": "views-1670d1bf677c75",
+                "report": null,
+                "level": 0,
+                "position": "1",
+                "0": "route",
+                "id": "actions-1670d1bf6786ff"
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [
+            {
+                "title": "Radar",
+                "table": "radar",
+                "fields": [
+                    {
+                        "title": "height",
+                        "subtitle": "Radar height (150km, 250km, 400km)",
+                        "type": "text",
+                        "settings": [],
+                        "column": "height"
+                    },
+                    {
+                        "title": "name",
+                        "subtitle": "Item caption",
+                        "type": "text",
+                        "settings": [],
+                        "column": "name"
+                    },
+                    {
+                        "title": "location",
+                        "subtitle": "Item Image location (https://path/to/radar/folder)",
+                        "type": "text",
+                        "settings": [],
+                        "column": "location"
+                    },
+                    {
+                        "title": "heading",
+                        "subtitle": "Item heading",
+                        "type": "text",
+                        "settings": [],
+                        "column": "heading"
+                    },
+                    {
+                        "title": "Code",
+                        "subtitle": "Item Code ",
+                        "type": "text",
+                        "settings": [],
+                        "column": "code"
+                    }
+                ],
+                "default_position": "Bottom",
+                "return_view": null,
+                "return_url": "",
+                "tagging": "",
+                "open_graph": "",
+                "hooks": [],
+                "id": "forms-1670d1a79bb67e"
+            }
+        ],
+        "reports": [],
+        "views": [
+            {
+                "title": "Radars",
+                "description": "Use this area to enter Radar Observation details",
+                "table": "radar",
+                "type": "searchable",
+                "settings": null,
+                "fields": {
+                    "height": {
+                        "title": "Height",
+                        "parser": "",
+                        "numeric": false,
+                        "width": "94"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "parser": "",
+                        "numeric": false,
+                        "width": "94"
+                    },
+                    "location": {
+                        "title": "Location",
+                        "parser": "",
+                        "numeric": false,
+                        "width": "94"
+                    },
+                    "heading": {
+                        "title": "Heading",
+                        "parser": "",
+                        "numeric": false,
+                        "width": "94"
+                    },
+                    "approved": {
+                        "title": "Approved",
+                        "parser": "",
+                        "numeric": false,
+                        "width": "94"
+                    },
+                    "code": {
+                        "title": "Code",
+                        "parser": "",
+                        "numeric": false,
+                        "width": "94"
+                    }
+                },
+                "actions": {
+                    "edit": "on",
+                    "delete": "on",
+                    "approve": "on",
+                    "archive": "on",
+                    "feature": "on"
+                },
+                "related_form": "forms-1670d1a79bb67e",
+                "preview_url": "",
+                "exclude_from_search": false,
+                "id": "views-1670d1bf677c75"
+            }
+        ],
+        "id": "modules-1670d173aa3798"
+    },
+    {
+        "name": "Satellite",
+        "route": "satellite",
+        "class": "Satellite",
+        "group": "module-groups-1670d173aa301a",
+        "gbp": null,
+        "graphql": false,
+        "icon": "weather",
+        "actions": [
+            {
+                "route": "add",
+                "in_nav": "on",
+                "class": "add",
+                "name": "Add Satellite",
+                "form": "forms-1670d3ab583a0f",
+                "view": null,
+                "report": null,
+                "level": 0,
+                "position": 1,
+                "0": "route",
+                "id": "actions-1670d3ab583e9c"
+            },
+            {
+                "route": "edit",
+                "in_nav": "",
+                "class": "edit",
+                "name": "Edit Satellite",
+                "form": "forms-1670d3ab583a0f",
+                "view": null,
+                "report": null,
+                "level": 0,
+                "position": 0,
+                "0": "route",
+                "id": "actions-1670d3ab58413b"
+            },
+            {
+                "route": null,
+                "in_nav": "on",
+                "class": "list",
+                "name": "View Satellites",
+                "form": null,
+                "view": "views-1670d3badd86a6",
+                "report": null,
+                "level": 0,
+                "position": "1",
+                "0": "route",
+                "id": "actions-1670d3badd8bb0"
+            }
+        ],
+        "embeddable-forms": [],
+        "forms": [
+            {
+                "title": "Satellite",
+                "table": "satellite",
+                "fields": [
+                    {
+                        "column": "name",
+                        "type": "text",
+                        "title": "name",
+                        "subtitle": "Name",
+                        "settings": []
+                    },
+                    {
+                        "column": "code_name",
+                        "type": "text",
+                        "title": "code_name",
+                        "subtitle": "Code Name",
+                        "settings": []
+                    },
+                    {
+                        "column": "description",
+                        "type": "text",
+                        "title": "description",
+                        "subtitle": "Description",
+                        "settings": []
+                    },
+                    {
+                        "column": "image_code",
+                        "type": "text",
+                        "title": "image_code",
+                        "subtitle": "Media Folder name",
+                        "settings": []
+                    },
+                    {
+                        "column": "image_link",
+                        "type": "text",
+                        "title": "image_link",
+                        "subtitle": "Image home link",
+                        "settings": []
+                    }
+                ],
+                "default_position": "",
+                "return_view": null,
+                "return_url": "",
+                "tagging": "",
+                "open_graph": "",
+                "hooks": [],
+                "id": "forms-1670d3ab583a0f"
+            }
+        ],
+        "reports": [],
+        "views": [
+            {
+                "title": "Satellites",
+                "description": "Use this form to add Satellite imagery ",
+                "table": "satellite",
+                "type": "searchable",
+                "settings": null,
+                "fields": {
+                    "name": {
+                        "width": 0,
+                        "title": "Name",
+                        "parser": "",
+                        "numeric": false
+                    },
+                    "code_name": {
+                        "width": 0,
+                        "title": "Code Name",
+                        "parser": "",
+                        "numeric": false
+                    },
+                    "description": {
+                        "width": 0,
+                        "title": "Description",
+                        "parser": "",
+                        "numeric": false
+                    },
+                    "image_code": {
+                        "width": 0,
+                        "title": "Image Code",
+                        "parser": "",
+                        "numeric": false
+                    },
+                    "image_link": {
+                        "width": 0,
+                        "title": "Image Link",
+                        "parser": "",
+                        "numeric": false
+                    }
+                },
+                "actions": {
+                    "edit": "on",
+                    "delete": "on"
+                },
+                "related_form": "forms-1670d3ab583a0f",
+                "preview_url": "",
+                "exclude_from_search": false,
+                "id": "views-1670d3badd86a6"
+            }
+        ],
+        "id": "modules-1670d39507b504"
+    }
+]

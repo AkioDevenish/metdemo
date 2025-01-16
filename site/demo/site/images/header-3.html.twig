@@ -1,0 +1,86 @@
+<section class="section">
+	<header class="page-header">
+		<div class="rd-navbar-wrap">
+			<nav class="rd-navbar rd-navbar-transparent" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-body-class="rd-navbar-absolute-linked" data-stick-up-clone="false" data-md-stick-up-offset="72px" data-lg-stick-up-offset="72px" data-stick-up="true" data-sm-stick-up="true" data-md-stick-up="true" data-lg-stick-up="true">
+				<div class="rd-navbar-top-panel novi-background">
+					<div class="rd-navbar-top-panel-toggle" data-rd-navbar-toggle=".rd-navbar-top-panel"><span></span></div>
+					<div class="rd-navbar-top-panel-content">
+						<div class="rd-navbar-top-panel-content-inner">
+							{% if page.topbar_left %}
+								{{ page.topbar_left }}
+							{% endif %}
+						</div>
+						<div class="object-inline">
+							{% if page.topbar_right %}
+								{{ page.topbar_right }}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="rd-navbar-inner">
+					<div class="rd-navbar-panel">
+						<div class="rd-navbar-panel-background">
+							<div class="rd-navbar-panel-background-inner novi-background"></div>
+						</div>
+						<button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+						<div class="rd-navbar-brand">
+						{% if node.drpn_node_setup2.value is not empty %}
+							<a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="brand-name"><img src="{{ node.drpn_node_setup2.value }}"  width="102" height="28" /></a>
+						{% else %}
+						  {% if page.branding %}
+							{{ page.branding }}
+						  {% endif %}
+						  
+						{% endif %}
+						
+						
+						</div>
+					</div>
+					<div class="rd-navbar-nav-wrap">
+						<div class="rd-navbar-nav-wrap-bg">
+							<div class="rd-navbar-nav-wrap-bg-inner novi-background"></div>
+						</div>
+						<div class="rd-navbar-nav-wrap-inner">
+							<ul class="rd-navbar-items-list rd-navbar-search_collapsable">
+								<li>
+									<button class="rd-navbar-search__toggle rd-navbar-fixed--hidden" data-rd-navbar-toggle=".rd-navbar-search_toggled"></button>
+								</li>
+								<li class="rd-navbar-nav-wrap__shop"><a class="icon novi-icon fl-bigmug-line-shopping202 link-white" href="#">(0)</a></li>
+							</ul>
+							<div class="rd-navbar-search rd-navbar-search_toggled rd-navbar-search_not-collapsable">
+								<div class="rd-navbar-search-inner">
+									<div class="rd-navbar-search-inner-bg novi-background"></div>
+								</div>
+								{% if page.search %}
+									{{ page.search }}
+								{% endif %}
+								
+							</div>
+						</div>
+						{% if page.main_menu %}
+						  {{ page.main_menu }}
+						{% endif %}
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	{% if node.drpn_node_setup12.value == 1 %}
+	{% set imageurl = '' %}
+	{% if node.drpn_node_setup13.value is not empty %}
+		{% set imageurl = node.drpn_node_setup13.value %}
+	{% else %}
+		{% set imageurl = background_image_url %}
+	{% endif %}
+	<section>
+		<div class="bg-image novi-background page-title page-title-custom" style="background-image: url(&quot;{{ imageurl }}&quot;);">
+			<div class="page-title-text">{{ node.title.value }}</div>
+		</div>
+		
+		<ul class="breadcrumbs-custom novi-background">
+			<li><a href="{{ path('<front>') }}" target="">{{ 'Home'|t }}</a></li>
+			<li class="active">{{ node.title.value }}</li>
+		</ul>
+	</section>
+{% endif %}
+</section>

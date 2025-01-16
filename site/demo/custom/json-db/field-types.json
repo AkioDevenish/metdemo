@@ -1,0 +1,26 @@
+[
+    {
+        "id": "com.fastspot.rawtext-field-types*raw-text",
+        "name": "Raw Text",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.rawtext-field-types"
+    },
+    {
+        "id": "com.fastspot.rawtext-field-types*raw-textarea",
+        "name": "Raw Text Area",
+        "use_cases": {
+            "templates": "on",
+            "modules": "on",
+            "callouts": "on",
+            "settings": "on"
+        },
+        "self_draw": null,
+        "extension": "com.fastspot.rawtext-field-types"
+    }
+]
