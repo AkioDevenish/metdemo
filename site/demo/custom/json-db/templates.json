@@ -79,6 +79,15 @@
         "hooks": [],
         "position": 5
     },
+    {  "id": "forecast_api",
+       "name": "forecast_api",
+       "module": "",
+       "resources": [],
+       "level": "0",
+       "routed": "",
+       "hooks": [],
+       "position": 7
+     },
     {
         "id": "satellite",
         "name": "satellite",
