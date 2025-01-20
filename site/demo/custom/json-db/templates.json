@@ -90,6 +90,16 @@
         "position": 3
     },
     {
+        "id": "radar_imagery",
+        "name": "radar_imagery",
+        "module": "",
+        "resources": [],
+        "level": "0",
+        "routed": "",
+        "hooks": [],
+        "position": 11
+    },
+    {
         "id": "forecast",
         "name": "forecast",
         "module": null,
