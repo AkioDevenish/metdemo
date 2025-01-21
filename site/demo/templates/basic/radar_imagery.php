@@ -28,7 +28,7 @@
             </div>
             <!-- PPI -->
             <div class="col-md-6 col-lg-4">
-              <div class="animated-box-wrap animated-box-skyscraper animated-box-skyscraper-right" data-href="<?=$www_root?>observations/radar-imagery/150km/150-km-plan-position-indicator-scan">
+              <div class="animated-box-wrap animated-box-skyscraper animated-box-skyscraper-right" data-href="<?=$www_root?>/observations/radar-imagery/150km/ppi-plan-position-indicator">
                 <div class="animated-box">
                   <div class="animated-box-front bg-image" style="background-image: url('https://www.metoffice.gov.tt/media/radar/150km/ppi/ppi15.png');">
                     <div class="animated-box-inner"><span class="heading-3 text-white">PPI</span></div>
