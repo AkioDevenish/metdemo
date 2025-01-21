@@ -171,19 +171,25 @@
 		BigTreeAdmin::loginSession($_GET["bigtree_login_redirect_session_key"]);
 	}
 
-	// Load everything in the custom extras folder.
-	$d = opendir(SERVER_ROOT."custom/inc/required/");
+	// Check if directory exists before trying to open it
+	$custom_required_dir = SERVER_ROOT."custom/inc/required/";
 	$custom_required_includes = array();
-	while ($f = readdir($d)) {
-		if (substr($f,0,1) != "." && !is_dir(SERVER_ROOT."custom/inc/required/$f")) {
-			$custom_required_includes[] = SERVER_ROOT."custom/inc/required/$f";
+
+	if (is_dir($custom_required_dir)) {
+		if ($d = opendir($custom_required_dir)) {
+			while ($f = readdir($d)) {
+				if (substr($f,0,1) != "." && !is_dir($custom_required_dir.$f)) {
+					$custom_required_includes[] = $custom_required_dir.$f;
+				}
+			}
+			closedir($d);
+			
+			// Include any found files
+			foreach ($custom_required_includes as $r) {
+				include $r;
+			}
 		}
 	}
-	closedir($d);
-	
-	foreach ($custom_required_includes as $r) {
-		include $r;
-	}
-	
+
 	// Clean up
-	unset($d,$r,$custom_required_includes);
+	unset($d,$r,$custom_required_includes,$custom_required_dir);
